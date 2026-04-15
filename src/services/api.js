@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  baseURL: process.env.REACT_APP_BASE_URL
 });
 
 // AUTH HEADER AUTO
@@ -11,11 +11,12 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const login = (data) => API.post("/auth/login", data);
-export const signup = (data) => API.post("/auth/signup", data);
+// FIXED ROUTES
+export const login = (data) => API.post("/api/auth/login", data);
+export const signup = (data) => API.post("/api/auth/signup", data);
 
-export const shortenUrl = (data) => API.post("/url/create", data);
+export const shortenUrl = (data) => API.post("/api/url/create", data);
 
-export const getUrls = () => API.get("/url/my");
+export const getUrls = () => API.get("/api/url/my");
 
-export const shareUrl = (data) => API.post("/url/share", data);
+export const shareUrl = (data) => API.post("/api/url/share", data);
