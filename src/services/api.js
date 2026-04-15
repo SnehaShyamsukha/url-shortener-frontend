@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL
+  baseURL: "https://url-shortener-backend-deo7.onrender.com"
 });
 
 // AUTH HEADER AUTO
