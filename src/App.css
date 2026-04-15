@@ -1,38 +1,312 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* PAGE TRANSITION */
+
+.page {
+  animation: fadeIn 0.6s ease-in;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.App-header {
-  background-color: #282c34;
+/* CONTAINERS */
+
+.dashboard-container,
+.login-container {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* CARD */
+
+.card,
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+  animation: floatCard 6s ease-in-out infinite;
+
+  color: #1e3a8a; /* ✅ FIX: applies to ALL text inside card */
+}
+
+.login-card h1 {
+  color: #1e3a8a;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* HEADINGS */
+
+.card h1,
+.card h2,
+.card h3,
+.login-card h2 {
+  color: #1e3a8a;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* INPUT */
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #eef6ff;
+  outline: none;
+}
+
+/* BUTTON */
+
+button {
+  border-radius: 12px;
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+
+  background: linear-gradient(135deg, #a1c4fd, #89f7fe);
+  color: #1e3a8a;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #5a67d8;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* RESULT */
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.result p {
+  font-weight: 600;
+  color: #1e3a8a; 
+}
+
+.link-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.link-box a {
+  flex: 1;
+  color: #667eea;
+  word-break: break-all;
+  text-align: left;
+}
+
+.link-box button {
+  width: auto;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+/* QR */
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.qr-container svg {
+  width: 120px;
+  height: 120px;
+}
+
+/* HISTORY */
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.history-item a {
+  flex: 1;
+  word-break: break-all;
+  text-align: left;
+  color: #1e3a8a; /* ✅ FIX */
+}
+
+.history-item div {
+  display: flex;
+  gap: 8px;
+}
+
+/* TOAST */
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  background: black;
+  color: white;
+
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+/* SIGNUP TEXT */
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #1e3a8a;
+  text-align: center;
+}
+
+.signup-text span {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signup-text span:hover {
+  text-decoration: underline;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-btn {
+  width: auto;
+  padding: 5px 10px;
+  background: #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+
+.dark {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
+
+.dark .card,
+.dark .login-card {
+  background: #1e293b;
+  color: white; /* ✅ applies to all text */
+}
+
+.dark .card h1,
+.dark .card h2,
+.dark .card h3,
+.dark .login-card h2 {
+  color: #ffffff;
+}
+
+.dark .card p,
+.dark .card span,
+.dark .card label,
+.dark .result p {
+  color: #ffffff; 
+  font-weight: 600;
+}
+
+.dark input {
+  background: #334155;
+  color: white;
+}
+
+.dark button {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.dark button:hover {
+  background: #6d28d9;
+}
+
+.dark .link-box a {
+  color: #9f7aea;
+}
+
+.dark .history-item a {
+  color: #ccc;
+}
+
+.dark .signup-text {
+  color: #cbd5f5;
+}
+
+.dark .signup-text span {
+  color: #93c5fd;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  .card,
+  .login-card {
+    width: 90%;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link-box button {
+    width: 100%;
   }
 }
